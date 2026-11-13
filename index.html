@@ -3,81 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="15;url=https://pongpakch.com/">
+  <meta http-equiv="refresh" content="20;url=https://pongpakch.com/">
   <title>ย้ายไปยัง pongpakch.com | ระบบคำนวณผลการเรียน</title>
   <link rel="icon" type="image/png" href="https://i.postimg.cc/1t1Kkydp/d-sin-th-y-ngmi-di-t-ngch-x.png">
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      margin: 0; min-height: 100vh; font-family: 'Prompt', sans-serif; color: #1e293b;
-      background: #f4f7fb; display: flex; align-items: center; justify-content: center; padding: 20px;
-      position: relative; overflow-x: hidden;
+      min-height: 100vh; font-family: 'Prompt', sans-serif; color: #0f172a;
+      background: linear-gradient(160deg, #e0f2fe 0%, #eef2ff 50%, #f5f3ff 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(16px, 5vw, 32px);
     }
-    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35; pointer-events: none; }
-    .b1 { width: 45vw; height: 45vw; background: #93c5fd; top: -10%; left: -10%; }
-    .b2 { width: 45vw; height: 45vw; background: #a5b4fc; bottom: -10%; right: -10%; }
-    .wrap { position: relative; width: 100%; max-width: 480px; }
+    .wrap { width: 100%; max-width: 440px; }
     .card {
-      background: rgba(255,255,255,.85); backdrop-filter: blur(16px);
-      border: 1px solid #fff; border-radius: 28px; padding: 36px 28px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.06); text-align: center;
+      background: #fff; border-radius: 28px; padding: clamp(26px, 6vw, 34px) clamp(20px, 5vw, 28px);
+      text-align: center; box-shadow: 0 25px 60px -15px rgba(56,189,248,.25);
     }
-    .logo {
-      width: 84px; height: 84px; border-radius: 22px; object-fit: contain;
-      background: linear-gradient(135deg,#3b82f6,#4f46e5); padding: 10px;
-      box-shadow: 0 10px 25px -5px rgba(79,70,229,.4); animation: float 3s ease-in-out infinite;
+    .logo-box {
+      width: clamp(92px, 24vw, 108px); height: clamp(92px, 24vw, 108px); margin: 0 auto;
+      background: #fff; border-radius: 30px; padding: 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 14px 30px -10px rgba(14,165,233,.35), inset 0 0 0 1px #e0f2fe;
     }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-    h1 { font-size: 21px; margin: 20px 0 6px; font-weight: 700; }
+    .logo { width: 100%; height: 100%; object-fit: contain; }
+    h1 { font-size: clamp(18px, 4.8vw, 21px); margin: 18px 0 6px; font-weight: 700; color: #0f172a; }
     .sub { font-size: 13px; color: #64748b; line-height: 1.7; margin: 0; }
     .domain {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
-      padding: 10px 18px; border-radius: 999px; background: #eef2ff;
-      color: #4f46e5; font-weight: 600; font-size: 15px;
+      display: inline-block; margin-top: 16px; padding: 8px 18px; border-radius: 999px;
+      background: #e0f2fe; color: #0369a1; font-weight: 600; font-size: 14px; word-break: break-all;
     }
     .btn {
       display: block; margin-top: 22px; padding: 15px; border-radius: 16px;
-      background: linear-gradient(135deg,#3b82f6 0%,#4f46e5 100%); color: #fff;
+      background: linear-gradient(135deg,#38bdf8 0%,#0ea5e9 100%); color: #fff;
       text-decoration: none; font-weight: 600; font-size: 15px;
-      box-shadow: 0 10px 25px -5px rgba(79,70,229,.4); transition: transform .15s;
+      box-shadow: 0 12px 24px -8px rgba(14,165,233,.55); transition: transform .15s;
     }
     .btn:active { transform: scale(.98); }
-    .countdown { font-size: 12px; color: #94a3b8; margin-top: 12px; }
+    .countdown { font-size: 12px; color: #94a3b8; margin: 12px 0 0; }
 
-    .steps { margin-top: 20px; background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.04); }
-    .steps h2 { font-size: 16px; margin: 0 0 16px; text-align: left; }
-    .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; text-align: left; }
+    .steps {
+      margin-top: 18px; background: #fff; border-radius: 28px;
+      padding: clamp(20px, 5vw, 24px); box-shadow: 0 15px 40px -15px rgba(15,23,42,.10);
+    }
+    .steps h2 { font-size: 15px; margin: 0 0 14px; color: #0369a1; font-weight: 700; }
+    .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
     .step:last-child { margin-bottom: 0; }
     .num {
       flex-shrink: 0; width: 30px; height: 30px; border-radius: 10px;
-      background: #eef2ff; color: #4f46e5; font-weight: 700; font-size: 14px;
-      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg,#38bdf8,#0ea5e9); color: #fff;
+      font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 12px -4px rgba(14,165,233,.5);
     }
-    .step b { display: block; font-size: 14px; margin-bottom: 2px; }
+    .step b { display: block; font-size: 13px; color: #0f172a; margin-bottom: 2px; }
     .step span { font-size: 12px; color: #64748b; line-height: 1.6; }
-    .tag { display: inline-block; font-size: 10px; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
+    .tag {
+      display: inline-block; font-size: 10px; font-weight: 600; background: #dcfce7; color: #15803d;
+      padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle;
+    }
   </style>
 </head>
 <body>
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-
   <div class="wrap">
     <div class="card">
-      <img class="logo" src="https://i.postimg.cc/1t1Kkydp/d-sin-th-y-ngmi-di-t-ngch-x.png" alt="logo">
+      <div class="logo-box">
+        <img class="logo" src="https://i.postimg.cc/1t1Kkydp/d-sin-th-y-ngmi-di-t-ngch-x.png" alt="logo">
+      </div>
       <h1>ระบบย้ายไปโดเมนใหม่แล้ว</h1>
       <p class="sub">ข้อมูลและบัญชีของคุณยังอยู่ครบ<br>กรุณาเข้าใช้งานที่ที่อยู่ใหม่</p>
-      <div class="domain">🔗 pongpakch.com</div>
+      <div class="domain">pongpakch.com</div>
       <a class="btn" href="https://pongpakch.com/">เข้าสู่เว็บไซต์ใหม่</a>
-      <p class="countdown">พาไปอัตโนมัติใน 15 วินาที</p>
+      <p class="countdown">พาไปอัตโนมัติใน 20 วินาที</p>
     </div>
 
     <div class="steps">
-      <h2>✨ วิธีใช้งานระบบใหม่</h2>
+      <h2>วิธีใช้งานระบบใหม่</h2>
       <div class="step">
         <div class="num">1</div>
-        <div><b>เข้าสู่ระบบ</b><span>ใช้รหัสนักศึกษาและรหัสผ่านเดิม หรือเข้าด้วย Google หรือ LINE</span></div>
+        <div><b>เข้าสู่ระบบ</b><span>ใช้ชื่อผู้ใช้/รหัสผ่าน, Google หรือ LINE</span></div>
       </div>
       <div class="step">
         <div class="num">2</div>
@@ -85,21 +89,17 @@
       </div>
       <div class="step">
         <div class="num">3</div>
-        <div><b>บันทึกเกรด</b><span>เลือกเกรดในแท็บโครงสร้างรายวิชา ระบบบันทึกให้อัตโนมัติ</span></div>
+        <div><b>เลือกเกรด</b><span>เลือกเกรดในหน้า "โครงสร้างรายวิชา" ระบบบันทึกให้อัตโนมัติ</span></div>
       </div>
       <div class="step">
         <div class="num">4</div>
         <div><b>เชื่อมบอท LINE<span class="tag">ใหม่</span></b><span>พิมพ์ GPAX หรือ CEE2301 A ในบอทเพื่อเช็คและบันทึกเกรดได้จากมือถือ</span></div>
       </div>
-      <div class="step">
-        <div class="num">5</div>
-        <div><b>ออกจากระบบ</b><span>กดปุ่มปิดเมื่อใช้เครื่องคนอื่น</span></div>
-      </div>
     </div>
   </div>
 
   <script>
-    let s = 15;
+    let s = 20;
     const el = document.querySelector('.countdown');
     const t = setInterval(() => {
       s--;
